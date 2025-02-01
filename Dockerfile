@@ -13,8 +13,11 @@ COPY . /app
 # Print Java version to ensure it's correct
 RUN java -version
 
-# Build the project with Maven
-RUN mvn clean install -DskipTests
+# Resolve dependencies first
+RUN mvn clean dependency:resolve
+
+# Build the project with Maven, capturing debug logs
+RUN mvn clean install -DskipTests --debug
 
 # Expose the default Lavalink port (2333)
 EXPOSE 2333
