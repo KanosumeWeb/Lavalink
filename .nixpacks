@@ -1,0 +1,3 @@
+# In your `.nixpacks` configuration
+# Ensure Maven is available in the build environment
+apk add --no-cache maven
